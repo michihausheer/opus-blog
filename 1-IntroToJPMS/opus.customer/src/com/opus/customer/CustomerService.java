@@ -7,8 +7,19 @@ import com.opus.address.AddressRepository;
 
 import com.opus.utils.PrintUtil;
 
+/**
+ * Sample application service that uses the {@link ServiceLoader} to load a repository. 
+ * 
+ * @author Michi Hausheer
+ *
+ */
 public class CustomerService {
 	
+	/**
+	 * Loads a address with the given name and prints it.
+	 * 
+	 * @param name
+	 */
 	public void loadAddress(String name)
 	{
 		Iterable<AddressRepository> repositories =
