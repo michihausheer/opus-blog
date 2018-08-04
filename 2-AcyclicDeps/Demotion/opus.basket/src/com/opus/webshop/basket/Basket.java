@@ -1,4 +1,4 @@
-package com.opus.webshop.sale.basket;
+package com.opus.webshop.basket;
 
 /**
  * Basket entity.

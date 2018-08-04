@@ -1,5 +1,9 @@
 package com.opus.webshop.inventory;
 
+import java.util.Set;
+
+import com.opus.webshop.basket.Basket;
+import com.opus.webshop.basket.BasketRepository;
 import com.opus.webshop.product.Product;
 
 /**
@@ -7,13 +11,25 @@ import com.opus.webshop.product.Product;
  */
 public class Inventory {
 
+	private BasketRepository basketRepo;
+	
 	/**
-	 * Return count of items currently in stock.
+	 * Returns how many items of the given product are available.
 	 * 
 	 * @param product
-	 * @return stock count
+	 * @return Count of available items
 	 */
-	public int getStockCount(Product product) {
-		return 3;
+	public int getAvailableCount(Product product) {
+		int stockCount = 3; 
+		int countInBaskets = countInBaskets(product);
+		return Math.min(0, stockCount - countInBaskets);
 	}
+
+	private int countInBaskets(Product product)
+	{
+		Set<Basket> baskets = basketRepo.findAllWithProduct(product);
+		//For this sample we ignore ordering multiple items of the same product
+		return baskets.size();
+	}
+	
 }

@@ -1,4 +1,4 @@
-package com.opus.webshop.sale.basket;
+package com.opus.webshop.basket;
 
 import java.util.HashSet;
 import java.util.Set;
