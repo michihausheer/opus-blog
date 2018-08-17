@@ -1,5 +1,7 @@
 package com.opus.webshop.inventory;
 
+import java.util.ServiceLoader;
+
 import com.opus.webshop.product.Product;
 
 /**
@@ -8,6 +10,12 @@ import com.opus.webshop.product.Product;
 public class Inventory {
 
 	private OngoingSalesCalculator ongoingSalesCalculator;
+	
+	public Inventory()
+	{
+		ServiceLoader<OngoingSalesCalculator> locator = ServiceLoader.load(OngoingSalesCalculator.class);
+		this.ongoingSalesCalculator =  locator.iterator().next();
+	}
 	
 	/**
 	 * Returns how many items of the given product are available.
